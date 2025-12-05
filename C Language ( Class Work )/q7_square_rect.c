@@ -10,5 +10,4 @@ void main(){
 	printf("\nArea of Square :- %d",a*a);
 	printf("\nArea of Rectangle :- %d",l*b);
 	getch();
-	
 }
