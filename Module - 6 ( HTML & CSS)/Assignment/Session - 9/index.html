@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 9 - Bootstrap Basics</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: Arial, sans-serif;
+        }
+
+        .task-wrapper {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+        }
+
+        .task-title {
+            color: #38bdf8;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body class="py-4">
+
+    <div class="container">
+
+
+        <div class="task-wrapper">
+            <h3 class="task-title">Task 1: Flipkart Product Cards (3 Columns Side-by-Side)</h3>
+
+            <div class="container">
+                <div class="row g-3">
+
+                    <div class="col-12 col-md-4">
+                        <div class="card h-100 bg-dark text-white border-secondary">
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300"
+                                class="card-img-top" alt="Headphones">
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <div>
+                                    <h5 class="card-title text-primary">Sony Headphones</h5>
+                                    <p class="card-text text-secondary small">Industry leading noise cancellation with
+                                        premium sound quality.</p>
+                                </div>
+                                <div class="mt-3">
+                                    <p class="fw-bold text-success mb-2">₹19,999</p>
+                                    <button class="btn btn-warning w-100 fw-bold">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 col-md-4">
+                        <div class="card h-100 bg-dark text-white border-secondary">
+                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300"
+                                class="card-img-top" alt="Smartwatch">
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <div>
+                                    <h5 class="card-title text-primary">Smart Fitness Watch</h5>
+                                    <p class="card-text text-secondary small">AMOLED display, heart rate tracking, and
+                                        7-day battery life.</p>
+                                </div>
+                                <div class="mt-3">
+                                    <p class="fw-bold text-success mb-2">₹2,999</p>
+                                    <button class="btn btn-warning w-100 fw-bold">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 col-md-4">
+                        <div class="card h-100 bg-dark text-white border-secondary">
+                            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300"
+                                class="card-img-top" alt="Shoes">
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <div>
+                                    <h5 class="card-title text-primary">Nike Sports Shoes</h5>
+                                    <p class="card-text text-secondary small">Lightweight air cushioning designed for
+                                        everyday running.</p>
+                                </div>
+                                <div class="mt-3">
+                                    <p class="fw-bold text-success mb-2">₹4,499</p>
+                                    <button class="btn btn-warning w-100 fw-bold">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="task-wrapper">
+            <h3 class="task-title">Task 2 & 4: Zomato Listing (2-Column Grid with Mobile Responsiveness)</h3>
+            <p class="text-secondary small mb-3">
+                <em>Note (Task 4): Uses <code>col-12</code> for screens &lt; 576px (stacks vertically) and
+                    <code>col-sm-6</code> for 576px and above (2 equal columns).</em>
+            </p>
+
+            <div class="row g-3">
+
+                <div class="col-12 col-sm-6">
+                    <div class="card bg-dark text-white border-danger h-100 p-2">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="card-title text-danger fw-bold mb-0">Punjab Grill</h5>
+                                <span class="badge bg-success">⭐ 4.5</span>
+                            </div>
+                            <p class="card-text text-secondary small">
+                                Authentic North Indian food, Mughlai delicacies, and famous Dum Biryani.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-sm-6">
+                    <div class="card bg-dark text-white border-danger h-100 p-2">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="card-title text-danger fw-bold mb-0">The Pizza Express</h5>
+                                <span class="badge bg-success">⭐ 4.3</span>
+                            </div>
+                            <p class="card-text text-secondary small">
+                                Italian wood-fired pizzas, hand-crafted pasta, and artisan desserts.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="task-wrapper">
+            <h3 class="task-title">Task 3: BookMyShow Movie Details Section</h3>
+
+            <div class="row align-items-center bg-dark p-3 rounded border border-secondary g-3">
+                -->
+                <div class="col-12 col-sm-4 text-center">
+                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=300"
+                        class="img-fluid rounded shadow" alt="Movie Poster">
+                </div>
+
+
+                <div class="col-12 col-sm-8">
+                    <h2 class="text-light fw-bold">Interstellar</h2>
+                    <p class="text-info mb-2"><strong>Genre:</strong> Sci-Fi / Adventure / Drama</p>
+                    <p class="text-warning mb-2"><strong>Rating:</strong> ⭐ 8.7/10 (250K Votes)</p>
+                    <p class="text-secondary small mb-3">
+                        When Earth becomes uninhabitable in the future, a team of ex-NASA researchers and pilots
+                        undertake a space mission through a wormhole to find a new home for mankind.
+                    </p>
+                    <button class="btn btn-danger btn-lg px-4 fw-bold">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

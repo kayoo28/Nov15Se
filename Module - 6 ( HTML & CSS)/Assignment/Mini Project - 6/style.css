@@ -1,0 +1,176 @@
+body {
+    background-color: #0b0f19;
+    color: #f1f5f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.section-wrapper {
+    background-color: #161f30;
+    border: 1px solid #243046;
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 35px;
+}
+
+.section-title {
+    color: #38bdf8;
+    border-bottom: 1px solid #243046;
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+
+.input-icon-group {
+    position: relative;
+}
+
+.input-icon-group i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    z-index: 10;
+}
+
+.input-icon-group input {
+    padding-left: 48px;
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    border: 1px solid #334155;
+    border-radius: 8px;
+}
+
+.input-icon-group input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 0.25rem rgba(56, 189, 248, 0.25);
+}
+
+.icon-spotify {
+    color: #1DB954;
+}
+
+.icon-youtube {
+    color: #FF0000;
+}
+
+.icon-apple {
+    color: #FA243C;
+}
+
+.icon-instagram {
+    color: #E4405F;
+}
+
+.icon-linkedin {
+    color: #0A66C2;
+}
+
+
+
+.gamer-card {
+    max-width: 450px;
+    margin: 0 auto;
+    background: linear-gradient(145deg, #1e1b4b, #0f172a);
+    border: 2px solid #6366f1;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+}
+
+.gamer-avatar {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border: 3px solid #818cf8;
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+}
+
+
+.gamer-links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+@media (min-width: 768px) {
+    .gamer-links-container {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+}
+
+.btn-gamer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-gamer:hover {
+    transform: translateY(-2px);
+}
+
+.btn-twitch {
+    background-color: #9146FF;
+    color: white;
+}
+
+.btn-discord {
+    background-color: #5865F2;
+    color: white;
+}
+
+.btn-steam {
+    background-color: #171a21;
+    color: white;
+    border: 1px solid #2a475e;
+}
+
+
+
+.preview-card {
+    background-color: #0f172a;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.card-spotify {
+    border-left: 6px solid #1DB954;
+    border-top: 1px solid #1e293b;
+    border-right: 1px solid #1e293b;
+    border-bottom: 1px solid #1e293b;
+}
+
+.card-youtube {
+    border-left: 6px solid #FF0000;
+    border-top: 1px solid #1e293b;
+    border-right: 1px solid #1e293b;
+    border-bottom: 1px solid #1e293b;
+}
+
+.card-apple {
+    border-left: 6px solid #FA243C;
+    border-top: 1px solid #1e293b;
+    border-right: 1px solid #1e293b;
+    border-bottom: 1px solid #1e293b;
+}
+
+.card-instagram {
+    border-left: 6px solid #E4405F;
+    border-top: 1px solid #1e293b;
+    border-right: 1px solid #1e293b;
+    border-bottom: 1px solid #1e293b;
+}

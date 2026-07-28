@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 11 - Bootstrap Utilities & Customization</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+        .btn-primary {
+            background-color: #8b5cf6 !important;
+            border-color: #7c3aed !important;
+            color: #ffffff !important;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: #6d28d9 !important;
+            border-color: #5b21b6 !important;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: Arial, sans-serif;
+        }
+
+        .task-wrapper {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+        }
+
+        .task-title {
+            color: #38bdf8;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+
+        #theme-toggle {
+            display: none;
+        }
+
+
+        .theme-card-wrapper {
+            background-color: #0f172a;
+            color: #f8fafc;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        #theme-toggle:checked~.theme-card-wrapper {
+            background-color: #f8f9fa !important;
+            color: #212529 !important;
+            border-color: #dee2e6 !important;
+        }
+
+
+        #theme-toggle:checked~.theme-card-wrapper .text-theme-sub {
+            color: #495057 !important;
+        }
+    </style>
+</head>
+
+<body class="py-4">
+
+    <div class="container" style="max-width: 850px;">
+
+
+        <div class="task-wrapper">
+            <h3 class="task-title">Task 1: Flipkart Product Cards (3 Spacing Levels)</h3>
+
+            <div class="row g-2">
+
+                <div class="col-12 col-md-4">
+                    <div class="card bg-dark text-white border-secondary m-1 p-2">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200"
+                            class="card-img-top rounded" alt="Product">
+                        <div class="card-body p-1 text-center">
+                            <h6 class="card-title mb-1">Level 1: Compact</h6>
+                            <p class="small text-muted mb-0">Class: <code>m-1 p-2</code></p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-md-4">
+                    <div class="card bg-dark text-white border-secondary m-2 p-3">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200"
+                            class="card-img-top rounded" alt="Product">
+                        <div class="card-body p-2 text-center">
+                            <h6 class="card-title mb-1">Level 2: Medium</h6>
+                            <p class="small text-muted mb-0">Class: <code>m-2 p-3</code></p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-md-4">
+                    <div class="card bg-dark text-white border-secondary m-3 p-4">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200"
+                            class="card-img-top rounded" alt="Product">
+                        <div class="card-body p-2 text-center">
+                            <h6 class="card-title mb-1">Level 3: Spacious</h6>
+                            <p class="small text-muted mb-0">Class: <code>m-3 p-4</code></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="task-wrapper">
+            <h3 class="task-title">Task 2: BookMyShow Movie Review Card (Typography Utilities)</h3>
+
+            <div class="card bg-dark text-white border-secondary p-3">
+
+                <h2 class="fs-2 fw-bold text-uppercase text-danger mb-1">Interstellar</h2>
+
+
+                <p class="fs-6 fw-normal text-muted mb-2">Sci-Fi • 2h 49m • English</p>
+
+
+                <p class="fs-5 fw-semibold text-warning mb-3">⭐ 8.7/10 <span class="fs-6 fw-light text-white">(250K
+                        Votes)</span></p>
+
+                <p class="fs-6 fw-light fst-italic text-light mb-0">
+                    "A masterpiece of modern cinema. Nolan balances breathtaking interstellar visuals with a deeply
+                    emotional father-daughter bond."
+                </p>
+            </div>
+        </div>
+
+
+
+        <div class="task-wrapper">
+            <h3 class="task-title">Task 3: Zomato Restaurant List (Color Utilities)</h3>
+
+            <div class="row g-3">
+
+                <div class="col-12 col-md-6">
+                    <div class="card bg-dark text-white border-secondary p-3">
+                        <h5 class="fw-bold mb-2">Punjab Grill</h5>
+
+                        <div class="d-flex gap-2 mb-2">
+
+                            <span class="badge bg-success text-white">⭐ 4.6</span>
+
+
+                            <span class="badge bg-warning text-dark">50% OFF up to ₹100</span>
+                        </div>
+
+
+                        <p class="small text-info mb-0 fw-semibold">● Open Now (Closes at 11:00 PM)</p>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-md-6">
+                    <div class="card bg-dark text-white border-secondary p-3">
+                        <h5 class="fw-bold mb-2">The Italian Kitchen</h5>
+
+                        <div class="d-flex gap-2 mb-2">
+
+                            <span class="badge bg-primary text-white">⭐ 3.9</span>
+
+
+                            <span class="badge bg-danger text-white">Flat 20% OFF</span>
+                        </div>
+
+
+                        <p class="small text-danger mb-0 fw-semibold">● Closed Now (Opens tomorrow at 12 PM)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="task-wrapper">
+            <h3 class="task-title">Task 4: Custom CSS Override for Primary Button</h3>
+            <p class="text-secondary small mb-3">
+                The button below uses <code>class="btn btn-primary"</code>, but its blue color has been overridden in
+                custom CSS to purple.
+            </p>
+
+            <button class="btn btn-primary px-4 py-2">Book Ticket</button>
+        </div>
+
+
+
+        <div class="task-wrapper">
+            <h3 class="task-title">Task 5: Theme Switcher (Light / Dark Mode Toggle)</h3>
+
+
+            <input type="checkbox" id="theme-toggle">
+
+
+            <label for="theme-toggle" class="btn btn-outline-info mb-3 fw-bold">
+                🌓 Click to Switch Theme (Light / Dark)
+            </label>
+
+
+            <div class="theme-card-wrapper">
+                <h4 class="fw-bold mb-2">BookMyShow Movie Preview</h4>
+                <p class="text-theme-sub mb-2"><strong>Movie:</strong> Avatar: The Way of Water</p>
+                <p class="text-theme-sub small mb-0">
+                    This container dynamically updates its background color and text color between Dark Mode and Light
+                    Mode using CSS without any JavaScript.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 12 - Music Artist Bio Landing Page</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: #f1f5f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+
+        .text-accent {
+            color: #1db954 !important;
+        }
+
+        .btn-accent {
+            background-color: #1db954;
+            color: #ffffff;
+            font-weight: 600;
+            border: none;
+        }
+
+        .btn-accent:hover {
+            background-color: #1aa34a;
+            color: #ffffff;
+        }
+
+        .artist-avatar {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 4px solid #1db954;
+        }
+
+        .section-padding {
+            padding: 60px 0;
+        }
+
+
+        .card-custom {
+            background-color: #161f30;
+            border: 1px solid #243046;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .card-custom:hover {
+            transform: translateY(-5px);
+        }
+
+
+        .social-link {
+            color: #cbd5e1;
+            transition: color 0.2s ease;
+        }
+
+        .social-link:hover {
+            color: #1db954;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand bg-dark sticky-top border-bottom border-secondary shadow-sm">
+        <div class="container">
+            <a class="navbar-brand text-accent fw-bold fs-4" href="#">
+                <i class="bi bi-music-note-beamed me-2"></i>ARIX MUSIC
+            </a>
+
+            <div class="navbar-nav ms-auto gap-3">
+                <a class="nav-link text-white fw-semibold" href="#home">Home</a>
+                <a class="nav-link text-secondary fw-semibold" href="#playlists">Playlists</a>
+                <a class="nav-link text-secondary fw-semibold" href="#merch">Merch</a>
+                <a class="nav-link text-secondary fw-semibold" href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <section id="home" class="section-padding text-center">
+        <div class="container">
+
+            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400" alt="Music Artist"
+                class="rounded-circle artist-avatar mb-3 shadow-lg">
+
+
+            <h1 class="fw-bold text-white mb-2">Alex "Arix" Vance</h1>
+            <p class="text-secondary mx-auto fs-5 mb-4" style="max-width: 600px;">
+                India Electronic & Synthwave Producer crafting immersive soundscapes, chill beats, and high-energy live
+                performances.
+            </p>
+
+
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="#" class="btn btn-accent px-4 py-2">
+                    <i class="bi bi-spotify me-2"></i>Spotify
+                </a>
+                <a href="#" class="btn btn-outline-danger px-4 py-2">
+                    <i class="bi bi-youtube me-2"></i>YouTube
+                </a>
+                <a href="#" class="btn btn-outline-light px-4 py-2">
+                    <i class="bi bi-instagram me-2"></i>Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="playlists" class="section-padding bg-black bg-opacity-25 border-top border-bottom border-secondary">
+        <div class="container">
+            <h2 class="text-white fw-bold mb-4 text-center">
+                <i class="bi bi-disc text-accent me-2"></i>Featured Playlists
+            </h2>
+
+            <div class="row g-4">
+
+                <div class="col-12 col-md-4">
+                    <div class="card card-custom h-100 text-white p-3">
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400"
+                            class="card-img-top rounded mb-3" alt="Midnight Synthwave">
+                        <div class="card-body p-0 d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="card-title fw-bold text-accent">Midnight Synthwave</h5>
+                                <p class="card-text text-secondary small">Deep retro synthwave tracks for late-night
+                                    drives and coding sessions.</p>
+                            </div>
+                            <button class="btn btn-accent w-100 mt-3">
+                                <i class="bi bi-play-circle-fill me-2"></i>Listen Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-md-4">
+                    <div class="card card-custom h-100 text-white p-3">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400"
+                            class="card-img-top rounded mb-3" alt="Chill Lofi Beats">
+                        <div class="card-body p-0 d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="card-title fw-bold text-accent">Chill Lofi Beats</h5>
+                                <p class="card-text text-secondary small">Relaxing ambient acoustic & lofi hip-hop
+                                    grooves to keep you focused.</p>
+                            </div>
+                            <button class="btn btn-accent w-100 mt-3">
+                                <i class="bi bi-play-circle-fill me-2"></i>Listen Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-md-4">
+                    <div class="card card-custom h-100 text-white p-3">
+                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400"
+                            class="card-img-top rounded mb-3" alt="Live Electronic Set">
+                        <div class="card-body p-0 d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="card-title fw-bold text-accent">Live Electronic Set</h5>
+                                <p class="card-text text-secondary small">High-octane electronic festival anthems
+                                    recorded live in Mumbai.</p>
+                            </div>
+                            <button class="btn btn-accent w-100 mt-3">
+                                <i class="bi bi-play-circle-fill me-2"></i>Listen Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="merch" class="section-padding">
+        <div class="container">
+            <h2 class="text-white fw-bold mb-4 text-center">
+                <i class="bi bi-bag-check text-accent me-2"></i>Official Merch
+            </h2>
+
+            <div class="row g-3">
+
+                <div class="col-6 col-md-3">
+                    <div class="card card-custom h-100 text-white p-2">
+                        <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300"
+                            class="card-img-top rounded mb-2" alt="Tour Hoodie">
+                        <div class="card-body p-2 d-flex flex-column justify-content-between">
+                            <div>
+                                <h6 class="card-title fw-bold text-truncate mb-1">Arix Tour Hoodie</h6>
+                                <p class="text-success fw-bold mb-2">₹1,999 <span
+                                        class="text-secondary text-decoration-line-through small">₹2,499</span></p>
+                            </div>
+                            <button class="btn btn-warning btn-sm w-100 fw-bold">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-6 col-md-3">
+                    <div class="card card-custom h-100 text-white p-2">
+                        <img src="https://images.unsplash.com/photo-1539185441755-769473a23570?w=300"
+                            class="card-img-top rounded mb-2" alt="Vinyl Record">
+                        <div class="card-body p-2 d-flex flex-column justify-content-between">
+                            <div>
+                                <h6 class="card-title fw-bold text-truncate mb-1">Limited Vinyl Record</h6>
+                                <p class="text-success fw-bold mb-2">₹3,499 <span
+                                        class="text-secondary text-decoration-line-through small">₹4,200</span></p>
+                            </div>
+                            <button class="btn btn-warning btn-sm w-100 fw-bold">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-6 col-md-3">
+                    <div class="card card-custom h-100 text-white p-2">
+                        <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=300"
+                            class="card-img-top rounded mb-2" alt="Snapback Cap">
+                        <div class="card-body p-2 d-flex flex-column justify-content-between">
+                            <div>
+                                <h6 class="card-title fw-bold text-truncate mb-1">Snapback Cap</h6>
+                                <p class="text-success fw-bold mb-2">₹899 <span
+                                        class="text-secondary text-decoration-line-through small">₹1,199</span></p>
+                            </div>
+                            <button class="btn btn-warning btn-sm w-100 fw-bold">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-6 col-md-3">
+                    <div class="card card-custom h-100 text-white p-2">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300"
+                            class="card-img-top rounded mb-2" alt="Headphones">
+                        <div class="card-body p-2 d-flex flex-column justify-content-between">
+                            <div>
+                                <h6 class="card-title fw-bold text-truncate mb-1">Artist Headphones</h6>
+                                <p class="text-success fw-bold mb-2">₹12,999 <span
+                                        class="text-secondary text-decoration-line-through small">₹15,999</span></p>
+                            </div>
+                            <button class="btn btn-warning btn-sm w-100 fw-bold">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer id="contact" class="bg-dark text-white py-4 border-top border-secondary">
+        <div class="container text-center">
+            <p class="mb-2 fw-semibold text-accent">Connect with Arix Music</p>
+
+
+            <div class="d-flex justify-content-center gap-4 mb-3 fs-4">
+                <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-spotify"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-twitter-x"></i></a>
+            </div>
+
+            <p class="text-secondary small mb-0">© 2026 Arix Music. All rights reserved. Built using HTML & Bootstrap
+                CSS.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

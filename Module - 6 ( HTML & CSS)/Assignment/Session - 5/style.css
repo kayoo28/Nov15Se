@@ -1,0 +1,26 @@
+button,
+.zomato-btn {
+  background-color: #e23744;
+  color: #ffffff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  display: inline-block;
+  text-decoration: none;
+}
+
+
+button:hover,
+.zomato-btn:hover {
+  background-color: #cb202d;
+  color: #ffffff;
+}
+
+button:active,
+.zomato-btn:active {
+  transform: scale(0.97);
+}

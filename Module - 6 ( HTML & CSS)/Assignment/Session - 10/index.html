@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 10 - Bootstrap Components (Pure HTML/CSS)</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .task-wrapper {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+        }
+
+        .task-title {
+            color: #38bdf8;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+
+        #nav-toggle:checked~#navbarNav {
+            display: block !important;
+        }
+
+
+        .carousel-track {
+            display: flex;
+            width: 300%;
+            animation: autoSlide 12s infinite;
+        }
+
+        .carousel-slide-item {
+            width: 33.333%;
+            flex-shrink: 0;
+        }
+
+        @keyframes autoSlide {
+
+            0%,
+            28% {
+                transform: translateX(0%);
+            }
+
+            33%,
+            61% {
+                transform: translateX(-33.333%);
+            }
+
+            66%,
+            94% {
+                transform: translateX(-66.666%);
+            }
+
+            100% {
+                transform: translateX(0%);
+            }
+        }
+    </style>
+</head>
+
+<body class="py-4">
+
+    <div class="container" style="max-width: 800px;">
+
+
+        <div class="task-wrapper">
+            <h3 class="task-title">Task 1: Spotify Music App Navbar (Pure HTML/CSS)</h3>
+
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark rounded px-3 border border-secondary">
+                <div class="container-fluid">
+                    <a class="navbar-brand text-success fw-bold fs-4" href="#">Spotify</a>
+
+
+                    <input type="checkbox" id="nav-toggle" class="d-none">
+                    <label for="nav-toggle" class="navbar-toggler" style="cursor: pointer;">
+                        <span class="navbar-toggler-icon"></span>
+                    </label>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link active text-white" href="#">Home</a></li>
+                            <li class="nav-item"><a class="nav-link text-secondary" href="#">Playlists</a></li>
+                            <li class="nav-item"><a class="nav-link text-secondary" href="#">Profile</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+
+
+        TASK 2: Flipkart Product Preview Card
+        ========================================== -->
+        <div class="task-wrapper">
+            <h3 class="task-title">Task 2: Flipkart Product Card</h3>
+
+            <div class="card bg-dark text-white border-secondary mx-auto shadow" style="max-width: 280px;">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400"
+                    class="card-img-top p-2 rounded" alt="Sony Headphones">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-light fw-bold">Sony WH-1000XM5</h5>
+                    <p class="card-text text-success fw-bold fs-5 mb-3">
+                        ₹26,990 <span class="text-secondary text-decoration-line-through fs-6 ms-1">₹34,990</span>
+                    </p>
+                    <button class="btn btn-warning w-100 fw-bold">Buy Now</button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="task-wrapper">
+            <h3 class="task-title">Task 3: BookMyShow Movie Poster Carousel (Pure CSS)</h3>
+
+            <div class="overflow-hidden rounded border border-secondary position-relative">
+                <div class="carousel-track">
+
+
+                    <div class="carousel-slide-item position-relative">
+                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800"
+                            class="d-block w-100" style="height: 300px; object-fit: cover;" alt="Movie 1">
+                        <div
+                            class="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-75 text-white text-center">
+                            <h5 class="fw-bold mb-1">Interstellar</h5>
+                            <p class="small mb-0">Mankind was born on Earth. It was never meant to die here.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="carousel-slide-item position-relative">
+                        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800"
+                            class="d-block w-100" style="height: 300px; object-fit: cover;" alt="Movie 2">
+                        <div
+                            class="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-75 text-white text-center">
+                            <h5 class="fw-bold mb-1">Inception</h5>
+                            <p class="small mb-0">Your mind is the scene of the crime.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="carousel-slide-item position-relative">
+                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800"
+                            class="d-block w-100" style="height: 300px; object-fit: cover;" alt="Movie 3">
+                        <div
+                            class="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-75 text-white text-center">
+                            <h5 class="fw-bold mb-1">Avatar: The Way of Water</h5>
+                            <p class="small mb-0">Return to Pandora in an epic cinematic journey.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="task-wrapper">
+            <h3 class="task-title">Task 4: Zomato Review Form</h3>
+
+            <form class="p-3 bg-dark rounded border border-secondary text-white">
+
+                <div class="mb-3">
+                    <label for="userName" class="form-label fw-semibold">Customer Name</label>
+                    <input type="text" class="form-control bg-secondary text-white border-0" id="userName"
+                        placeholder="Enter your full name" required>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="rating" class="form-label fw-semibold">Rating</label>
+                    <select class="form-select bg-secondary text-white border-0" id="rating">
+                        <option value="5">⭐⭐⭐⭐⭐ (5 - Excellent)</option>
+                        <option value="4">⭐⭐⭐⭐ (4 - Good)</option>
+                        <option value="3">⭐⭐⭐ (3 - Average)</option>
+                        <option value="2">⭐⭐ (2 - Poor)</option>
+                        <option value="1">⭐ (1 - Terrible)</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="reviewMsg" class="form-label fw-semibold">Review Message</label>
+                    <textarea class="form-control bg-secondary text-white border-0" id="reviewMsg" rows="3"
+                        placeholder="Write your experience about taste, quality, and delivery..."></textarea>
+                </div>
+
+
+                <button type="submit" class="btn btn-danger w-100 fw-bold">Submit Review</button>
+            </form>
+        </div>
+
+
+        <div class="task-wrapper">
+            <h3 class="task-title">Task 5: Homepage Food Category Filter Buttons</h3>
+
+            <div class="d-flex flex-wrap gap-2">
+                <button class="btn btn-danger active fw-bold px-4">All</button>
+                <button class="btn btn-outline-danger fw-bold px-4">Veg</button>
+                <button class="btn btn-outline-danger fw-bold px-4">Non-Veg</button>
+                <button class="btn btn-outline-danger fw-bold px-4">Desserts</button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

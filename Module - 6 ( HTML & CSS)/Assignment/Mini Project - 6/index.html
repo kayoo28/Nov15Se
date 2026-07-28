@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Project 6 - Social Bio Link Page UI</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body class="py-5">
+
+    <div class="container" style="max-width: 850px;">
+        <div class="text-center mb-5">
+            <h1 class="fw-bold text-white mb-2">Social Bio Link Page Generator</h1>
+            <p class="text-secondary">Mini Project 6 - UI Design built with HTML, CSS & Bootstrap</p>
+        </div>
+
+        <div class="section-wrapper">
+            <h3 class="section-title">
+                <i class="bi bi-link-45deg me-2"></i>Task 1 & 3: Music & Social Link Input Form
+            </h3>
+
+            <form id="musicLinksForm" action="#" method="GET">
+                <div class="row g-3">
+
+                    <div class="col-12 col-md-6">
+                        <label for="spotifyUrl" class="form-label text-secondary small fw-semibold">Spotify Profile
+                            URL</label>
+                        <div class="input-icon-group">
+                            <i class="bi bi-spotify icon-spotify"></i>
+                            <input type="url" class="form-control" id="spotifyUrl"
+                                placeholder="https://open.spotify.com/user/alex_beats">
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label for="youtubeUrl" class="form-label text-secondary small fw-semibold">YouTube Music
+                            URL</label>
+                        <div class="input-icon-group">
+                            <i class="bi bi-youtube icon-youtube"></i>
+                            <input type="url" class="form-control" id="youtubeUrl"
+                                placeholder="https://music.youtube.com/@alexmusic">
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label for="appleUrl" class="form-label text-secondary small fw-semibold">Apple Music
+                            URL</label>
+                        <div class="input-icon-group">
+                            <i class="bi bi-apple icon-apple"></i>
+                            <input type="url" class="form-control" id="appleUrl"
+                                placeholder="https://music.apple.com/profile/alex_vibes">
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label for="instaUrl" class="form-label text-secondary small fw-semibold">Instagram URL</label>
+                        <div class="input-icon-group">
+                            <i class="bi bi-instagram icon-instagram"></i>
+                            <input type="url" class="form-control" id="instaUrl"
+                                placeholder="https://instagram.com/alex_official">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mt-4 text-end">
+                    <button type="submit" class="btn btn-primary px-4 fw-bold">
+                        <i class="bi bi-plus-circle me-1"></i> Add Bio Links
+                    </button>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="section-wrapper">
+            <h3 class="section-title">
+                <i class="bi bi-card-heading me-2"></i>Task 4: Generated Bio Preview Cards
+            </h3>
+
+            <div class="d-flex flex-column gap-3">
+
+                <div class="preview-card card-spotify">
+                    <div class="d-flex align-items-center gap-3">
+                        <i class="bi bi-spotify fs-2 icon-spotify"></i>
+                        <div>
+                            <h6 class="mb-0 text-white fw-bold">Spotify Music</h6>
+                            <span class="text-secondary small">@alex_beats</span>
+                        </div>
+                    </div>
+                    <a href="https://open.spotify.com" target="_blank"
+                        class="btn btn-sm btn-outline-success px-3 fw-semibold">
+                        Visit <i class="bi bi-box-arrow-up-right ms-1"></i>
+                    </a>
+                </div>
+
+
+                <div class="preview-card card-youtube">
+                    <div class="d-flex align-items-center gap-3">
+                        <i class="bi bi-youtube fs-2 icon-youtube"></i>
+                        <div>
+                            <h6 class="mb-0 text-white fw-bold">YouTube Music</h6>
+                            <span class="text-secondary small">@alexmusic</span>
+                        </div>
+                    </div>
+                    <a href="https://music.youtube.com" target="_blank"
+                        class="btn btn-sm btn-outline-danger px-3 fw-semibold">
+                        Visit <i class="bi bi-box-arrow-up-right ms-1"></i>
+                    </a>
+                </div>
+
+
+                <div class="preview-card card-apple">
+                    <div class="d-flex align-items-center gap-3">
+                        <i class="bi bi-apple fs-2 icon-apple"></i>
+                        <div>
+                            <h6 class="mb-0 text-white fw-bold">Apple Music</h6>
+                            <span class="text-secondary small">@alex_vibes</span>
+                        </div>
+                    </div>
+                    <a href="https://music.apple.com" target="_blank"
+                        class="btn btn-sm btn-outline-light px-3 fw-semibold">
+                        Visit <i class="bi bi-box-arrow-up-right ms-1"></i>
+                    </a>
+                </div>
+
+
+                <div class="preview-card card-instagram">
+                    <div class="d-flex align-items-center gap-3">
+                        <i class="bi bi-instagram fs-2 icon-instagram"></i>
+                        <div>
+                            <h6 class="mb-0 text-white fw-bold">Instagram</h6>
+                            <span class="text-secondary small">@alex_official</span>
+                        </div>
+                    </div>
+                    <a href="https://instagram.com" target="_blank"
+                        class="btn btn-sm btn-outline-warning px-3 fw-semibold">
+                        Visit <i class="bi bi-box-arrow-up-right ms-1"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="section-wrapper">
+            <h3 class="section-title">
+                <i class="bi bi-controller me-2"></i>Task 2: Responsive 'Gamer Tag' Bio Link UI
+            </h3>
+
+            <div class="gamer-card">
+
+                <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=300" alt="Gamer Avatar"
+                    class="rounded-circle gamer-avatar mb-3">
+
+
+                <h3 class="fw-bold text-white mb-1">kayoo_Gaming <i
+                        class="bi bi-patch-check-fill text-primary fs-5"></i></h3>
+                <p class="text-secondary small mb-4">Pro Valorant Player • Streaming Daily @ 8 PM EST</p>
+
+                <div class="gamer-links-container">
+                    <a href="https://twitch.tv" target="_blank" class="btn-gamer btn-twitch">
+                        <i class="bi bi-twitch fs-5"></i> Follow on Twitch
+                    </a>
+
+                    <a href="https://discord.com" target="_blank" class="btn-gamer btn-discord">
+                        <i class="bi bi-discord fs-5"></i> Join Discord Server
+                    </a>
+
+                    <a href="https://store.steampowered.com" target="_blank" class="btn-gamer btn-steam">
+                        <i class="bi bi-steam fs-5"></i> View Steam Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
