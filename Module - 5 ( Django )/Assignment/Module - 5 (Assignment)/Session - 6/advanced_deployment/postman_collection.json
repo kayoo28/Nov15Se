@@ -1,0 +1,14 @@
+{
+  "info": {
+    "name": "Session 6 Advanced APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{"key":"base_url","value":"http://127.0.0.1:8000"}],
+  "item": [
+    {"name":"Send Email","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n  \"email\": \"user@example.com\"\n}"},"url":"{{base_url}}/api/v1/send-email/"}},
+    {"name":"Send SMS","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n  \"phone\": \"+919999999999\",\n  \"message\": \"Welcome!\"\n}"},"url":"{{base_url}}/api/v1/send-sms/"}},
+    {"name":"Payment","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n  \"amount\": 500,\n  \"currency\": \"usd\"\n}"},"url":"{{base_url}}/api/v1/payment/"}},
+    {"name":"Google Login","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n  \"access_token\": \"GOOGLE_ACCESS_TOKEN\"\n}"},"url":"{{base_url}}/api/v1/google-login/"}},
+    {"name":"Email V2","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n  \"email\": \"user@example.com\"\n}"},"url":"{{base_url}}/api/v2/send-email/"}}
+  ]
+}

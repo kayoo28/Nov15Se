@@ -1,0 +1,19 @@
+TokenAuthentication vs SessionAuthentication
+
+TokenAuthentication:
+- The client sends a token with each API request.
+- The normal header is: Authorization: Token <token>
+- It is useful for mobile apps, frontend clients, Postman, and API clients.
+- Django REST Framework's authtoken app stores the token.
+
+SessionAuthentication:
+- Django identifies the user through a logged-in browser session.
+- It is useful for browser-based applications and Django's Browsable API.
+- The client normally does not manually send an API token.
+- CSRF protection applies to unsafe requests when SessionAuthentication is used.
+
+Interview answer:
+TokenAuthentication is token-based: the client sends a token with API requests.
+SessionAuthentication is based on Django's logged-in browser session. Token
+authentication is convenient for API clients such as mobile apps and Postman,
+while session authentication is convenient for browser-based Django applications.

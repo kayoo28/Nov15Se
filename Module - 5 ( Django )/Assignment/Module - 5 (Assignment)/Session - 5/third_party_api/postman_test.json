@@ -1,0 +1,53 @@
+{
+  "info": {
+    "name": "Session 5 - Weather API Test",
+    "_postman_id": "session5-weather-test",
+    "description": "Postman request and test for /api/music-weather/<city>/",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000"
+    },
+    {
+      "key": "city",
+      "value": "London"
+    }
+  ],
+  "item": [
+    {
+      "name": "Music Weather - London",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/music-weather/{{city}}/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "music-weather",
+            "{{city}}"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Response contains temperature and description', function () {",
+              "    const json = pm.response.json();",
+              "    pm.expect(json).to.have.property('temperature');",
+              "    pm.expect(json).to.have.property('description');",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
