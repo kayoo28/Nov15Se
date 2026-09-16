@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 3 - Operators & Conditions</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 40px;
+      background: #f4f4f4;
+      color: #222;
+    }
+
+    .container {
+      max-width: 750px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .info {
+      margin-top: 20px;
+      padding: 20px;
+      background: #eee;
+      border-radius: 8px;
+    }
+
+    code {
+      background: #ddd;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Session 3: Operators & Conditions</h1>
+
+    <div class="info">
+      <p>Open <strong>F12 → Console</strong> to see all task outputs.</p>
+      <p>The functions from this session are also called from the JavaScript code.</p>
+    </div>
+  </div>
+
+  <script>
+
+
+    let likes = 120;
+    let comments = 35;
+
+    let totalEngagement = likes + comments;
+
+    console.log("Likes:", likes);
+    console.log("Comments:", comments);
+    console.log("Total Engagement:", totalEngagement);
+
+
+    let likesCount = 0;
+
+    likesCount += 1;
+    likesCount += 1;
+    likesCount += 1;
+
+    console.log("Updated likes count:", likesCount);
+
+    function showDiscountTag(price) {
+      if (price < 500) {
+        console.log("Special Discount");
+      } else {
+        console.log("Regular Price");
+      }
+    }
+
+    showDiscountTag(350);
+    showDiscountTag(700);
+
+    function isEligibleForDiscount(totalAmount) {
+      return totalAmount >= 500;
+    }
+
+    console.log("300:", isEligibleForDiscount(300));
+    console.log("700:", isEligibleForDiscount(700));
+
+
+
+    let followers = 1500;
+
+    let badge = followers > 1000
+      ? "Verified Creator"
+      : "Regular User";
+    console.log("Followers:", followers);
+    console.log("Badge:", badge);
+
+
+    function getBadge(followers) {
+      return followers >= 1000
+        ? "Verified Creator ⭐"
+        : "Regular User";
+    }
+
+    console.log("500 followers:", getBadge(500));
+    console.log("1000 followers:", getBadge(1000));
+    console.log("1500 followers:", getBadge(1500));
+
+
+    let isPremiumUser = true;
+    let hasActiveSubscription = true;
+
+    if (isPremiumUser && hasActiveSubscription) {
+      console.log("Access Granted");
+    } else {
+      console.log("Upgrade Needed");
+    }
+
+    console.log(
+      "Access:",
+      isPremiumUser && hasActiveSubscription
+        ? "Access Granted"
+        : "Upgrade Needed"
+    );
+
+    let username = "Priya";
+
+    if (username) {
+      console.log(`Welcome, ${username}!`);
+    } else {
+      console.log("Guest Login");
+    }
+
+    username = "";
+
+    if (username) {
+      console.log(`Welcome, ${username}!`);
+    } else {
+      console.log("Guest Login");
+    }
+
+    username = null;
+
+    if (username) {
+      console.log(`Welcome, ${username}!`);
+    } else {
+      console.log("Guest Login");
+    }
+
+
+    function isTruthy(input) {
+      return input ? "Truthy" : "Falsy";
+    }
+    console.log("0:", isTruthy(0));
+    console.log("null:", isTruthy(null));
+    console.log("'hello':", isTruthy("hello"));
+    console.log("42:", isTruthy(42));
+
+    function canOrderFood(isLoggedIn, hasPaymentMethod) {
+      return isLoggedIn && hasPaymentMethod;
+    }
+
+    console.log(
+      "false, false:",
+      canOrderFood(false, false)
+    );
+
+    console.log(
+      "false, true:",
+      canOrderFood(false, true)
+    );
+
+    console.log(
+      "true, false:",
+      canOrderFood(true, false)
+    );
+
+    console.log(
+      "true, true:",
+      canOrderFood(true, true)
+    );
+
+    console.table([
+      {
+        isLoggedIn: false,
+        hasPaymentMethod: false,
+        canOrder: canOrderFood(false, false)
+      },
+      {
+        isLoggedIn: false,
+        hasPaymentMethod: true,
+        canOrder: canOrderFood(false, true)
+      },
+      {
+        isLoggedIn: true,
+        hasPaymentMethod: false,
+        canOrder: canOrderFood(true, false)
+      },
+      {
+        isLoggedIn: true,
+        hasPaymentMethod: true,
+        canOrder: canOrderFood(true, true)
+      }
+    ]);
+
+    console.log("Session 3 completed successfully.");
+  </script>
+
+</body>
+</html>

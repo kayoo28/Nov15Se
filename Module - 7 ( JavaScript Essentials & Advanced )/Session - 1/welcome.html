@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session - 1</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 40px;
+      background: #f4f4f4;
+      color: #222;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    button {
+      padding: 12px 20px;
+      margin: 8px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #333;
+      color: white;
+      font-size: 15px;
+    }
+
+    button:hover {
+      background: #555;
+    }
+
+    #bio {
+      margin-top: 20px;
+      padding: 15px;
+      background: #eee;
+      border-radius: 8px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Welcome to My Insta Bio-Link</h1>
+
+    <h2 id="appsHeading">Top 3 Food Apps</h2>
+>
+    <button id="showBioBtn">Show Bio</button>
+
+    <button id="greetingBtn">Show Greeting</button>
+
+    <div id="bio" class="hidden">
+      <p><strong>Name:</strong> Mohit</p>
+      <p><strong>Favorite App:</strong> Instagram</p>
+      <p><strong>Favorite Food App:</strong> Zomato</p>
+    </div>
+  </div>
+
+  <script>
+ 
+    alert("Welcome to Your Insta Bio-Link Page, Mohit!");
+    console.log("Hello from the console!");
+    console.log("JS is running!");
+    console.log("JavaScript is connected to the HTML!");
+
+    const showBioBtn = document.querySelector("#showBioBtn");
+    const bio = document.querySelector("#bio");
+
+    showBioBtn.addEventListener("click", function () {
+      bio.classList.remove("hidden");
+
+      alert("Name: Mohit\nFavorite App: Instagram");
+    });
+
+    const greetingBtn = document.querySelector("#greetingBtn");
+
+    greetingBtn.addEventListener("click", function () {
+      alert("Hello from JS!");
+    });
+
+    const appsHeading = document.querySelector("#appsHeading");
+    appsHeading.style.color = "green";
+
+    console.log("Top 3 Food Apps heading color changed to green.");
+  </script>
+
+</body>
+</html>

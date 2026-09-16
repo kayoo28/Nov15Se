@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 5 - Functions & Reusability</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 40px;
+      background: #f4f4f4;
+      color: #222;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .food-item {
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      background: #eee;
+    }
+
+    .food-item h3 {
+      margin: 0 0 5px;
+    }
+
+    .playlist {
+      margin-top: 30px;
+    }
+
+    .playlist button {
+      margin: 5px;
+    }
+
+    .info {
+      padding: 15px;
+      background: #eee;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Session 5: Functions & Reusability</h1>
+
+    <div class="info">
+      <p>Session 5 demonstrates function declarations, function expressions, arrow functions, parameters, return values, and reusable DOM functions.</p>
+      <p><strong>F12 → Console</strong> open karke task outputs bhi dekh sakte ho.</p>
+    </div>
+
+    <div class="buttons" id="spotifyButtons"></div>
+
+    <h2>Zomato Menu</h2>
+    <div id="menu"></div>
+
+    <div class="playlist">
+      <h2>My Spotify Playlist</h2>
+      <div id="playlistButtons"></div>
+    </div>
+  </div>
+
+  <script>
+
+    function createSpotifyButton(label, color) {
+      const button = document.createElement("button");
+
+      button.textContent = label;
+      button.style.backgroundColor = color;
+
+      return button;
+    }
+
+    const spotifyButtonsContainer =
+      document.querySelector("#spotifyButtons");
+
+    const spotifyButton1 =
+      createSpotifyButton("My Spotify", "green");
+
+    const spotifyButton2 =
+      createSpotifyButton("My Playlist", "purple");
+
+    spotifyButtonsContainer.appendChild(spotifyButton1);
+    spotifyButtonsContainer.appendChild(spotifyButton2);
+
+    const getGreeting = function (name) {
+      return `Hello, ${name}!`;
+    };
+
+
+    console.log(getGreeting("Rahul"));
+
+
+    const getDiscountedPrice = function (price, discountPercent) {
+      const discountAmount = price * discountPercent / 100;
+      const finalPrice = price - discountAmount;
+
+      return finalPrice;
+    };
+
+    console.log("Price: 1000, Discount: 20%");
+    console.log("Final Price:", getDiscountedPrice(1000, 20));
+
+    console.log("Price: 2500, Discount: 10%");
+    console.log("Final Price:", getDiscountedPrice(2500, 10));
+
+
+    const formatFollowers = (count) => {
+      if (count >= 1000000) {
+        return (count / 1000000).toFixed(1) + "M";
+      } else if (count >= 1000) {
+        return (count / 1000).toFixed(1) + "K";
+      } else {
+        return count;
+      }
+    };
+
+    console.log("1500:", formatFollowers(1500));
+    console.log("2000000:", formatFollowers(2000000));
+    console.log("850:", formatFollowers(850));
+
+
+    console.log(formatFollowers(1200));
+    console.log(formatFollowers(2500000));
+
+
+    function createLikeButton(label, color) {
+      const button = document.createElement("button");
+
+      button.textContent = label;
+      button.style.backgroundColor = color;
+
+      document.body.appendChild(button);
+
+      return button;
+    }
+
+    createLikeButton("Like", "blue");
+    createLikeButton("Follow", "green");
+
+    function showMenuItem(name, price) {
+      const div = document.createElement("div");
+
+      div.className = "food-item";
+
+      div.innerHTML = `
+        <h3>${name}</h3>
+        <p>Price: ₹${price}</p>
+      `;
+
+      return div;
+    }
+
+    const menu = document.querySelector("#menu");
+
+    menu.appendChild(showMenuItem("Paneer Pizza", 299));
+    menu.appendChild(showMenuItem("Veg Burger", 149));
+    menu.appendChild(showMenuItem("Masala Dosa", 129));
+
+
+    const double = (x) => x * 2;
+    console.log("double(5):", double(5));
+    console.log("double(10):", double(10));
+
+    const createPlaylistButton = (songName, themeColor) => {
+      const button = document.createElement("button");
+
+      button.textContent = songName;
+      button.style.backgroundColor = themeColor;
+
+      return button;
+    };
+
+    const playlistButtons =
+      document.querySelector("#playlistButtons");
+
+    playlistButtons.appendChild(
+      createPlaylistButton("Kesariya", "orange")
+    );
+
+    playlistButtons.appendChild(
+      createPlaylistButton("Chaleya", "purple")
+    );
+
+    playlistButtons.appendChild(
+      createPlaylistButton("Heeriye", "teal")
+    );
+
+
+    console.log("===== FUNCTION TYPES =====");
+    console.log("Function Declaration: createLikeButton()");
+    console.log("Function Expression: getGreeting()");
+    console.log("Arrow Function: formatFollowers()");
+    console.log("Arrow Function: double()");
+    console.log("Arrow Function: createPlaylistButton()");
+
+  </script>
+
+</body>
+</html>

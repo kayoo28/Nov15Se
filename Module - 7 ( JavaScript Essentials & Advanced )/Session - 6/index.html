@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 6 - DOM Manipulation</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 40px;
+      background: #f4f4f4;
+      color: #222;
+      transition: background-color 0.3s;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .box {
+      padding: 20px;
+      margin: 15px 0;
+      background: #eee;
+      border-radius: 8px;
+    }
+
+    input {
+      padding: 10px;
+      margin: 5px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 16px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      background: #333;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+
+    ul {
+      text-align: left;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    #moodbox {
+      min-height: 60px;
+      border: 2px solid #ccc;
+    }
+
+    #colorInput {
+      width: 180px;
+    }
+
+    .now-playing {
+      padding: 20px;
+      border-radius: 8px;
+      background: #eee;
+      margin-top: 25px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- TASK 1-3 -->
+    <h1>Session 6: DOM Manipulation</h1>
+
+    <div id="greeting" class="box"></div>
+
+    <!-- TASK 4-6 -->
+    <h2>My Playlist</h2>
+
+    <input
+      type="text"
+      id="songInput"
+      placeholder="Enter song name"
+    >
+
+    <button id="addSongBtn">Add Song</button>
+
+    <ul id="playlist"></ul>
+
+    <h2 id="offer">Special Offer</h2>
+
+    <!-- TASK 9 -->
+    <button id="darkModeBtn">Light Mode</button>
+
+    <!-- TASK 10-11 -->
+    <h2>Live Mood Box</h2>
+
+    <input
+      type="text"
+      id="colorInput"
+      placeholder="Type color e.g. pink"
+    >
+
+    <div id="moodbox" class="box">
+      Type a color above...
+    </div>
+
+    <!-- TASK 12 -->
+    <div class="now-playing">
+      <h2>🎵 Now Playing</h2>
+
+      <span id="song-title">Kesariya</span>
+
+      <br>
+
+      <button id="changeSongBtn">Change Song</button>
+    </div>
+
+  </div>
+
+
+  <script>
+
+    const greeting = document.getElementById("greeting");
+
+    greeting.innerHTML = "Welcome to the IPL Fan Zone!";
+
+
+
+    const songInput = document.querySelector("#songInput");
+    const addSongBtn = document.querySelector("#addSongBtn");
+    const playlist = document.querySelector("#playlist");
+
+    addSongBtn.addEventListener("click", function () {
+
+      const songName = songInput.value;
+
+      if (songName.trim() !== "") {
+
+        const newSong = document.createElement("li");
+
+        newSong.innerHTML = songName;
+
+        playlist.appendChild(newSong);
+
+        songInput.value = "";
+      }
+
+    });
+
+
+
+    const friendInput = document.createElement("input");
+
+    friendInput.type = "text";
+    friendInput.placeholder = "Enter friend's name";
+    friendInput.id = "friendInput";
+
+    const friendButton = document.createElement("button");
+
+    friendButton.innerHTML = "Add Friend";
+
+    const friendList = document.createElement("ul");
+
+    friendList.id = "friend-list";
+
+    document.querySelector(".container").appendChild(friendInput);
+    document.querySelector(".container").appendChild(friendButton);
+    document.querySelector(".container").appendChild(friendList);
+
+    friendButton.addEventListener("click", function () {
+
+      const friendName = friendInput.value;
+
+      if (friendName.trim() !== "") {
+
+        const newFriend = document.createElement("li");
+
+        newFriend.innerHTML = friendName;
+
+        friendList.appendChild(newFriend);
+
+        friendInput.value = "";
+      }
+
+    });
+
+
+    const offer = document.getElementById("offer");
+
+    offer.textContent = "Flat 50% Off on Zomato Today!";
+    offer.style.color = "red";
+
+
+
+    const darkModeBtn = document.getElementById("darkModeBtn");
+
+    let isDarkMode = false;
+
+    darkModeBtn.addEventListener("click", function () {
+
+      if (isDarkMode === false) {
+
+        document.body.style.backgroundColor = "#222";
+        document.body.style.color = "white";
+        darkModeBtn.textContent = "Dark Mode";
+
+        isDarkMode = true;
+
+      } else {
+
+        document.body.style.backgroundColor = "#f4f4f4";
+        document.body.style.color = "#222";
+        darkModeBtn.textContent = "Light Mode";
+
+        isDarkMode = false;
+      }
+
+    });
+
+
+    const colorInput = document.getElementById("colorInput");
+    const moodbox = document.getElementById("moodbox");
+
+    colorInput.addEventListener("input", function () {
+
+      const color = colorInput.value;
+
+      moodbox.style.backgroundColor = color;
+
+    });
+
+
+    const songTitle = document.getElementById("song-title");
+    const changeSongBtn = document.getElementById("changeSongBtn");
+
+    const songs = [
+      "Kesariya",
+      "Chaleya",
+      "Heeriye",
+      "Apna Bana Le"
+    ];
+
+    let currentSongIndex = 0;
+
+    changeSongBtn.addEventListener("click", function () {
+
+      currentSongIndex++;
+
+      if (currentSongIndex >= songs.length) {
+        currentSongIndex = 0;
+      }
+
+      songTitle.innerHTML = songs[currentSongIndex];
+
+    });
+
+    console.log("Session 6: DOM Manipulation is running!");
+    console.log("Greeting:", greeting.innerHTML);
+    console.log("Offer:", offer.textContent);
+  </script>
+
+</body>
+</html>

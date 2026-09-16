@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session 4 - Loops & Iteration</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 40px;
+        background: #f4f4f4;
+        color: #222;
+      }
+
+      .container {
+        max-width: 750px;
+        margin: auto;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      .info {
+        margin-top: 20px;
+        padding: 20px;
+        background: #eee;
+        border-radius: 8px;
+      }
+
+      code {
+        background: #ddd;
+        padding: 2px 5px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Session 4: Loops & Iteration</h1>
+
+      <div class="info">
+        <p><strong>Open F12 → Console</strong> to see all task outputs.</p>
+        <p>
+          This session demonstrates <code>for</code>, <code>while</code>,
+          <code>do...while</code>, <code>for...of</code>, and
+          <code>forEach()</code>.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      const favApps = ["Instagram", "Zomato", "Paytm", "WhatsApp", "YouTube"];
+
+      for (let i = 0; i < favApps.length; i++) {
+        console.log(favApps[i]);
+      }
+
+      const favoriteSongs = [
+        "Kesariya",
+        "Tum Hi Ho",
+        "Apna Bana Le",
+        "Chaleya",
+        "Heeriye",
+      ];
+
+      for (let i = 0; i < favoriteSongs.length; i++) {
+        console.log(favoriteSongs[i]);
+      }
+
+      const cricketTeams = ["MI", "CSK", "RCB", "GT", "KKR"];
+
+      let i = 0;
+
+      while (i < cricketTeams.length) {
+        console.log(cricketTeams[i].toUpperCase());
+        i++;
+      }
+
+      const instagramUsernames = ["mohit", "priya", "rahul", "riya", "aarya"];
+
+      let usernameIndex = 0;
+
+      while (usernameIndex < instagramUsernames.length) {
+        console.log(instagramUsernames[usernameIndex].toUpperCase());
+        usernameIndex++;
+      }
+
+      const playlist = ["Kesariya", "Tum Hi Ho", "Apna Bana Le", "Heeriye"];
+
+      let playlistIndex = 0;
+
+      do {
+        console.log(playlistIndex, playlist[playlistIndex]);
+        playlistIndex++;
+      } while (playlistIndex < playlist.length);
+
+      const orderStatuses = ["Preparing", "Out for delivery", "Delivered"];
+
+      let statusIndex = 0;
+
+      do {
+        console.log("Order status:", orderStatuses[statusIndex]);
+        statusIndex++;
+      } while (statusIndex < orderStatuses.length);
+
+      const products = [
+        { name: "Laptop", price: 55000 },
+        { name: "Headphones", price: 2500 },
+        { name: "Smartphone", price: 30000 },
+        { name: "Keyboard", price: 1500 },
+      ];
+
+      for (const product of products) {
+        console.log(product.name);
+      }
+
+      for (const product of products) {
+        console.log("Product:", product.name);
+      }
+
+      const productPrices = [55000, 2500, 30000, 1500];
+
+      let totalPrice = 0;
+
+      for (const price of productPrices) {
+        totalPrice += price;
+      }
+
+      console.log("Total price:", totalPrice);
+      const whatsappContacts = ["Priya", "Rahul", "Riya", "Aarya", "Neha"];
+
+      whatsappContacts.forEach((name) => {
+        console.log(`Sending hi to ${name} on WhatsApp!`);
+      });
+
+      const teams = ["MI", "CSK", "RCB", "GT"];
+
+      teams.forEach((team) => {
+        console.log(`Go ${team}!`);
+      });
+
+      console.log("===== LOOP TYPES SUMMARY =====");
+      console.log("for       -> useful when you need an index/count");
+      console.log("while     -> repeats while a condition is true");
+      console.log("do...while -> runs at least once before checking condition");
+      console.log("for...of  -> directly gets each array value");
+      console.log("forEach   -> runs a callback for every array element");
+    </script>
+  </body>
+</html>
