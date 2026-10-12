@@ -1,0 +1,605 @@
+{% extends "transport/base.html" %}
+
+{% block title %}
+Expenses | TransitOps
+{% endblock %}
+
+{% block page_title %}
+Expenses
+{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <!-- ===================================== -->
+    <!-- PAGE HEADER -->
+    <!-- ===================================== -->
+
+    <div class="dashboard-header">
+
+        <div>
+
+            <h2 class="mb-1">
+
+                Expense Management
+
+            </h2>
+
+            <p class="text-muted mb-0">
+
+                Manage all transport expenses.
+
+            </p>
+
+        </div>
+
+        <div>
+
+            <a href="{% url 'expense_add' %}"
+               class="btn btn-primary">
+
+                <i class="bi bi-plus-circle me-2"></i>
+
+                Add Expense
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- ===================================== -->
+    <!-- SEARCH -->
+    <!-- ===================================== -->
+
+    <div class="dashboard-panel">
+
+        <div class="row">
+
+            <div class="col-md-8">
+
+                <input
+                    type="text"
+                    id="expenseSearch"
+                    class="form-control"
+                    placeholder="Search by vehicle, trip, category or description...">
+
+            </div>
+
+            <div class="col-md-4 text-end">
+
+                <span class="badge bg-primary">
+
+                    Total Expenses :
+                    {{ expenses|length }}
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+        <!-- ===================================== -->
+    <!-- EXPENSE TABLE -->
+    <!-- ===================================== -->
+
+    <div class="dashboard-panel">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle"
+                   id="expenseTable">
+
+                <thead>
+
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>Vehicle</th>
+
+                        <th>Trip</th>
+
+                        <th>Category</th>
+
+                        <th>Expense Date</th>
+
+                        <th>Amount</th>
+
+                        <th>Description</th>
+
+                        <th class="text-center">
+
+                            Actions
+
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for expense in expenses %}
+
+                    <tr>
+
+                        <td>
+
+                            {{ forloop.counter }}
+
+                        </td>
+
+                        <td>
+
+                            {{ expense.vehicle.vehicle_number }}
+
+                        </td>
+
+                        <td>
+
+                            {% if expense.trip %}
+
+                                {{ expense.trip.trip_id }}
+
+                            {% else %}
+
+                                --
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+
+                            <span class="badge bg-info">
+
+                                {{ expense.category }}
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            {{ expense.expense_date }}
+
+                        </td>
+
+                        <td>
+
+                            ₹ {{ expense.amount }}
+
+                        </td>
+
+                        <td>
+
+                            {{ expense.description|truncatechars:40 }}
+
+                        </td>
+
+                        <td class="text-center">
+
+                            <a href="{% url 'expense_edit' expense.pk %}"
+
+                               class="btn btn-sm btn-outline-primary me-2">
+
+                                <i class="bi bi-pencil-square"></i>
+
+                            </a>
+
+                            <a href="{% url 'expense_delete' expense.pk %}"
+
+                               class="btn btn-sm btn-outline-danger">
+
+                                <i class="bi bi-trash"></i>
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td colspan="8"
+
+                            class="text-center py-5 text-muted">
+
+                            <i class="bi bi-cash-stack fs-1 d-block mb-3"></i>
+
+                            No Expense Records Found
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+        <!-- ===================================== -->
+    <!-- EXPENSE SUMMARY -->
+    <!-- ===================================== -->
+
+    <div class="row mt-4">
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="summary-card text-center">
+
+                <i class="bi bi-cash-stack text-primary fs-1 mb-3"></i>
+
+                <small>
+
+                    Total Expenses
+
+                </small>
+
+                <h3>
+
+                    {{ expenses|length }}
+
+                </h3>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="summary-card text-center">
+
+                <i class="bi bi-currency-rupee text-success fs-1 mb-3"></i>
+
+                <small>
+
+                    Total Amount
+
+                </small>
+
+                <h3>
+
+                    ₹ {{ total_amount|default:"0" }}
+
+                </h3>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="summary-card text-center">
+
+                <i class="bi bi-receipt text-warning fs-1 mb-3"></i>
+
+                <small>
+
+                    Average Expense
+
+                </small>
+
+                <h3>
+
+                    ₹ {{ average_amount|default:"0" }}
+
+                </h3>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="summary-card text-center">
+
+                <i class="bi bi-tags text-danger fs-1 mb-3"></i>
+
+                <small>
+
+                    Categories Used
+
+                </small>
+
+                <h3>
+
+                    {{ category_count|default:"0" }}
+
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ===================================== -->
+    <!-- QUICK STATISTICS -->
+    <!-- ===================================== -->
+
+    <div class="dashboard-panel mt-4">
+
+        <div class="row">
+
+            <div class="col-md-4 text-center">
+
+                <h5>
+
+                    <i class="bi bi-wallet2 text-primary"></i>
+
+                    Highest Expense
+
+                </h5>
+
+                <h2 class="mt-3">
+
+                    ₹ {{ highest_expense|default:"0" }}
+
+                </h2>
+
+            </div>
+
+            <div class="col-md-4 text-center">
+
+                <h5>
+
+                    <i class="bi bi-bar-chart-line text-success"></i>
+
+                    Average Spending
+
+                </h5>
+
+                <h2 class="mt-3">
+
+                    ₹ {{ average_amount|default:"0" }}
+
+                </h2>
+
+            </div>
+
+            <div class="col-md-4 text-center">
+
+                <h5>
+
+                    <i class="bi bi-graph-up-arrow text-warning"></i>
+
+                    Expense Health
+
+                </h5>
+
+                <h2 class="mt-3">
+
+                    Stable
+
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+        <!-- ===================================== -->
+    <!-- RECENT EXPENSES -->
+    <!-- ===================================== -->
+
+    <div class="row mt-4">
+
+        <div class="col-lg-8">
+
+            <div class="dashboard-panel">
+
+                <div class="panel-header">
+
+                    <h5 class="mb-0">
+
+                        Recent Expenses
+
+                    </h5>
+
+                </div>
+
+                <div class="table-responsive">
+
+                    <table class="table table-striped align-middle">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Vehicle</th>
+
+                                <th>Category</th>
+
+                                <th>Date</th>
+
+                                <th>Amount</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            {% for expense in expenses|slice:":5" %}
+
+                            <tr>
+
+                                <td>
+
+                                    <strong>
+
+                                        {{ expense.vehicle.vehicle_number }}
+
+                                    </strong>
+
+                                </td>
+
+                                <td>
+
+                                    {{ expense.category }}
+
+                                </td>
+
+                                <td>
+
+                                    {{ expense.expense_date }}
+
+                                </td>
+
+                                <td>
+
+                                    ₹ {{ expense.amount }}
+
+                                </td>
+
+                            </tr>
+
+                            {% empty %}
+
+                            <tr>
+
+                                <td colspan="4"
+
+                                    class="text-center text-muted py-4">
+
+                                    No Expense Records Available
+
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ===================================== -->
+        <!-- EXPENSE MANAGEMENT TIPS -->
+        <!-- ===================================== -->
+
+        <div class="col-lg-4">
+
+            <div class="dashboard-panel">
+
+                <div class="panel-header">
+
+                    <h5 class="mb-0">
+
+                        Expense Tips
+
+                    </h5>
+
+                </div>
+
+                <ul class="list-group list-group-flush">
+
+                    <li class="list-group-item">
+
+                        ✔ Record every expense immediately.
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        ✔ Upload bills for future reference.
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        ✔ Categorize expenses correctly.
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        ✔ Review monthly spending regularly.
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        ✔ Track unexpected expenses separately.
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+        <!-- ===================================== -->
+    <!-- PAGE FOOTER -->
+    <!-- ===================================== -->
+
+    <div class="text-center mt-4 mb-2">
+
+        <small class="text-muted">
+
+            TransitOps Expense Management • {{ expenses|length }} Record(s)
+
+        </small>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const searchInput = document.getElementById("expenseSearch");
+
+    const table = document.getElementById("expenseTable");
+
+    if (!table || !searchInput) return;
+
+    const rows = table.querySelectorAll("tbody tr");
+
+    searchInput.addEventListener("keyup", function () {
+
+        const value = this.value.toLowerCase();
+
+        rows.forEach(function (row) {
+
+            row.style.display =
+                row.innerText.toLowerCase().includes(value)
+                    ? ""
+                    : "none";
+
+        });
+
+    });
+
+});
+
+</script>
+
+{% endblock %}

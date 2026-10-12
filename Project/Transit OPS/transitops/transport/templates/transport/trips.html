@@ -1,0 +1,698 @@
+{% extends "transport/base.html" %}
+
+{% block title %}
+Trips | TransitOps
+{% endblock %}
+
+{% block page_title %}
+Trips
+{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <!-- ===================================== -->
+    <!-- PAGE HEADER -->
+    <!-- ===================================== -->
+
+    <div class="dashboard-header">
+
+        <div>
+
+            <h2 class="mb-1">
+
+                Trip Management
+
+            </h2>
+
+            <p class="text-muted mb-0">
+
+                Manage all transport trips.
+
+            </p>
+
+        </div>
+
+        <div>
+
+            <a href="{% url 'trip_add' %}"
+               class="btn btn-primary">
+
+                <i class="bi bi-plus-circle me-2"></i>
+
+                Add Trip
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- ===================================== -->
+    <!-- SEARCH -->
+    <!-- ===================================== -->
+
+    <div class="dashboard-panel">
+
+        <div class="row">
+
+            <div class="col-md-8">
+
+                <input
+                    type="text"
+                    id="tripSearch"
+                    class="form-control"
+                    placeholder="Search by Trip ID, Vehicle, Driver, Source or Destination...">
+
+            </div>
+
+            <div class="col-md-4 text-end">
+
+                <span class="badge bg-primary">
+
+                    Total Trips :
+                    {{ trips|length }}
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+        <!-- ===================================== -->
+    <!-- TRIP TABLE -->
+    <!-- ===================================== -->
+
+    <div class="dashboard-panel">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle" id="tripTable">
+
+                <thead>
+
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>Trip ID</th>
+
+                        <th>Vehicle</th>
+
+                        <th>Driver</th>
+
+                        <th>Route</th>
+
+                        <th>Start Date</th>
+
+                        <th>Status</th>
+
+                        <th class="text-center">
+
+                            Actions
+
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for trip in trips %}
+
+                    <tr>
+
+                        <td>
+
+                            {{ forloop.counter }}
+
+                        </td>
+
+                        <td>
+
+                            <strong>
+
+                                {{ trip.trip_id }}
+
+                            </strong>
+
+                        </td>
+
+                        <td>
+
+                            {{ trip.vehicle.vehicle_number }}
+
+                        </td>
+
+                        <td>
+
+                            {{ trip.driver.full_name }}
+
+                        </td>
+
+                        <td>
+
+                            <strong>
+
+                                {{ trip.source }}
+
+                            </strong>
+
+                            <br>
+
+                            <small class="text-muted">
+
+                                <i class="bi bi-arrow-right"></i>
+
+                                {{ trip.destination }}
+
+                            </small>
+
+                        </td>
+
+                        <td>
+
+                            {{ trip.start_date }}
+
+                            <br>
+
+                            <small class="text-muted">
+
+                                {{ trip.start_time }}
+
+                            </small>
+
+                        </td>
+
+                        <td>
+
+                            {% if trip.status == "SCHEDULED" %}
+
+                                <span class="badge bg-secondary">
+
+                                    Scheduled
+
+                                </span>
+
+                            {% elif trip.status == "ONGOING" %}
+
+                                <span class="badge bg-primary">
+
+                                    Ongoing
+
+                                </span>
+
+                            {% elif trip.status == "COMPLETED" %}
+
+                                <span class="badge bg-success">
+
+                                    Completed
+
+                                </span>
+
+                            {% elif trip.status == "CANCELLED" %}
+
+                                <span class="badge bg-danger">
+
+                                    Cancelled
+
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-dark">
+
+                                    {{ trip.status }}
+
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td class="text-center">
+
+                            <a href="{% url 'trip_edit' trip.pk %}"
+
+                               class="btn btn-sm btn-outline-primary me-2">
+
+                                <i class="bi bi-pencil-square"></i>
+
+                            </a>
+
+                            <a href="{% url 'trip_delete' trip.pk %}"
+
+                               class="btn btn-sm btn-outline-danger">
+
+                                <i class="bi bi-trash"></i>
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td colspan="8"
+
+                            class="text-center py-5 text-muted">
+
+                            <i class="bi bi-map fs-1 d-block mb-3"></i>
+
+                            No Trips Found
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+        <!-- ===================================== -->
+    <!-- TRIP SUMMARY -->
+    <!-- ===================================== -->
+
+    <div class="row mt-4">
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="summary-card text-center">
+
+                <i class="bi bi-truck text-primary fs-1 mb-3"></i>
+
+                <small>
+
+                    Total Trips
+
+                </small>
+
+                <h3>
+
+                    {{ trips|length }}
+
+                </h3>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="summary-card text-center">
+
+                <i class="bi bi-play-circle-fill text-info fs-1 mb-3"></i>
+
+                <small>
+
+                    Ongoing Trips
+
+                </small>
+
+                <h3>
+
+                    {{ ongoing_trip_count|default:0 }}
+
+                </h3>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="summary-card text-center">
+
+                <i class="bi bi-check-circle-fill text-success fs-1 mb-3"></i>
+
+                <small>
+
+                    Completed Trips
+
+                </small>
+
+                <h3>
+
+                    {{ completed_trip_count|default:0 }}
+
+                </h3>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="summary-card text-center">
+
+                <i class="bi bi-x-circle-fill text-danger fs-1 mb-3"></i>
+
+                <small>
+
+                    Cancelled Trips
+
+                </small>
+
+                <h3>
+
+                    {{ cancelled_trip_count|default:0 }}
+
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ===================================== -->
+    <!-- QUICK STATS -->
+    <!-- ===================================== -->
+
+    <div class="dashboard-panel mt-4">
+
+        <div class="row">
+
+            <div class="col-md-4 text-center">
+
+                <h5>
+
+                    <i class="bi bi-speedometer2 text-primary"></i>
+
+                    Total Distance
+
+                </h5>
+
+                <h2 class="mt-3">
+
+                    {{ total_distance|default:"0" }} km
+
+                </h2>
+
+            </div>
+
+            <div class="col-md-4 text-center">
+
+                <h5>
+
+                    <i class="bi bi-currency-rupee text-success"></i>
+
+                    Total Revenue
+
+                </h5>
+
+                <h2 class="mt-3">
+
+                    ₹ {{ total_trip_cost|default:"0" }}
+
+                </h2>
+
+            </div>
+
+            <div class="col-md-4 text-center">
+
+                <h5>
+
+                    <i class="bi bi-graph-up-arrow text-warning"></i>
+
+                    Completion Rate
+
+                </h5>
+
+                <h2 class="mt-3">
+
+                    {{ completion_rate|default:"0" }}%
+
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+        <!-- ===================================== -->
+    <!-- RECENT TRIPS -->
+    <!-- ===================================== -->
+
+    <div class="row mt-4">
+
+        <div class="col-lg-8">
+
+            <div class="dashboard-panel">
+
+                <div class="panel-header">
+
+                    <h5 class="mb-0">
+
+                        Recent Trips
+
+                    </h5>
+
+                </div>
+
+                <div class="table-responsive">
+
+                    <table class="table table-striped align-middle">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Trip ID</th>
+
+                                <th>Vehicle</th>
+
+                                <th>Driver</th>
+
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            {% for trip in trips|slice:":5" %}
+
+                            <tr>
+
+                                <td>
+
+                                    <strong>
+
+                                        {{ trip.trip_id }}
+
+                                    </strong>
+
+                                </td>
+
+                                <td>
+
+                                    {{ trip.vehicle.vehicle_number }}
+
+                                </td>
+
+                                <td>
+
+                                    {{ trip.driver.full_name }}
+
+                                </td>
+
+                                <td>
+
+                                    {% if trip.status == "COMPLETED" %}
+
+                                        <span class="badge bg-success">
+
+                                            Completed
+
+                                        </span>
+
+                                    {% elif trip.status == "ONGOING" %}
+
+                                        <span class="badge bg-primary">
+
+                                            Ongoing
+
+                                        </span>
+
+                                    {% elif trip.status == "SCHEDULED" %}
+
+                                        <span class="badge bg-secondary">
+
+                                            Scheduled
+
+                                        </span>
+
+                                    {% elif trip.status == "CANCELLED" %}
+
+                                        <span class="badge bg-danger">
+
+                                            Cancelled
+
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="badge bg-dark">
+
+                                            {{ trip.status }}
+
+                                        </span>
+
+                                    {% endif %}
+
+                                </td>
+
+                            </tr>
+
+                            {% empty %}
+
+                            <tr>
+
+                                <td colspan="4"
+
+                                    class="text-center text-muted py-4">
+
+                                    No Recent Trips
+
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ===================================== -->
+        <!-- OPERATION TIPS -->
+        <!-- ===================================== -->
+
+        <div class="col-lg-4">
+
+            <div class="dashboard-panel">
+
+                <div class="panel-header">
+
+                    <h5 class="mb-0">
+
+                        Operations Tips
+
+                    </h5>
+
+                </div>
+
+                <ul class="list-group list-group-flush">
+
+                    <li class="list-group-item">
+
+                        ✔ Verify vehicle before departure.
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        ✔ Confirm driver assignment.
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        ✔ Track ongoing trips regularly.
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        ✔ Update trip status promptly.
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        ✔ Close completed trips daily.
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+        <!-- ===================================== -->
+    <!-- PAGE FOOTER -->
+    <!-- ===================================== -->
+
+    <div class="text-center mt-4 mb-2">
+
+        <small class="text-muted">
+
+            TransitOps Trip Management • {{ trips|length }} Trip(s)
+
+        </small>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const searchInput = document.getElementById("tripSearch");
+
+    const table = document.getElementById("tripTable");
+
+    if (!table || !searchInput) return;
+
+    const rows = table.querySelectorAll("tbody tr");
+
+    searchInput.addEventListener("keyup", function () {
+
+        const value = this.value.toLowerCase();
+
+        rows.forEach(function (row) {
+
+            row.style.display =
+                row.innerText.toLowerCase().includes(value)
+                    ? ""
+                    : "none";
+
+        });
+
+    });
+
+});
+
+</script>
+
+{% endblock %}

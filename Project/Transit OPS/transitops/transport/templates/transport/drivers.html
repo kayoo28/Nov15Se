@@ -1,0 +1,642 @@
+{% extends "transport/base.html" %}
+
+{% block title %}
+Drivers | TransitOps
+{% endblock %}
+
+{% block page_title %}
+Drivers
+{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <!-- ===================================== -->
+    <!-- PAGE HEADER -->
+    <!-- ===================================== -->
+
+    <div class="dashboard-header">
+
+        <div>
+
+            <h2 class="mb-1">
+
+                Driver Management
+
+            </h2>
+
+            <p class="text-muted mb-0">
+
+                Manage all registered drivers.
+
+            </p>
+
+        </div>
+
+        <div>
+
+            <a href="{% url 'driver_add' %}"
+               class="btn btn-primary">
+
+                <i class="bi bi-person-plus me-2"></i>
+
+                Add Driver
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- ===================================== -->
+    <!-- SEARCH -->
+    <!-- ===================================== -->
+
+    <div class="dashboard-panel">
+
+        <div class="row">
+
+            <div class="col-md-8">
+
+                <input
+                    type="text"
+                    id="driverSearch"
+                    class="form-control"
+                    placeholder="Search by name, driver ID or phone...">
+
+            </div>
+
+            <div class="col-md-4 text-end">
+
+                <span class="badge bg-primary">
+
+                    Total Drivers :
+                    {{ drivers|length }}
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+        <!-- ===================================== -->
+    <!-- DRIVER TABLE -->
+    <!-- ===================================== -->
+
+    <div class="dashboard-panel">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle" id="driverTable">
+
+                <thead>
+
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>Driver ID</th>
+
+                        <th>Name</th>
+
+                        <th>Phone</th>
+
+                        <th>Email</th>
+
+                        <th>License</th>
+
+                        <th>Status</th>
+
+                        <th class="text-center">
+
+                            Actions
+
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for driver in drivers %}
+
+                    <tr>
+
+                        <td>
+
+                            {{ forloop.counter }}
+
+                        </td>
+
+                        <td>
+
+                            <strong>
+
+                                {{ driver.driver_id }}
+
+                            </strong>
+
+                        </td>
+
+                        <td>
+
+                            {{ driver.full_name }}
+
+                        </td>
+
+                        <td>
+
+                            {{ driver.phone }}
+
+                        </td>
+
+                        <td>
+
+                            {{ driver.email|default:"--" }}
+
+                        </td>
+
+                        <td>
+
+                            {% if driver.license_status == "VALID" %}
+
+                                <span class="badge bg-success">
+
+                                    Valid
+
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-danger">
+
+                                    Expired
+
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+
+                            {% if driver.active %}
+
+                                <span class="badge bg-success">
+
+                                    Active
+
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-secondary">
+
+                                    Inactive
+
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td class="text-center">
+
+                            <a href="{% url 'driver_edit' driver.pk %}"
+                               class="btn btn-sm btn-outline-primary me-2">
+
+                                <i class="bi bi-pencil-square"></i>
+
+                            </a>
+
+                            <a href="{% url 'driver_delete' driver.pk %}"
+                               class="btn btn-sm btn-outline-danger">
+
+                                <i class="bi bi-trash"></i>
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td colspan="8"
+                            class="text-center py-5 text-muted">
+
+                            <i class="bi bi-person-x fs-1 d-block mb-3"></i>
+
+                            No Drivers Found
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+        <!-- ===================================== -->
+    <!-- DRIVER SUMMARY -->
+    <!-- ===================================== -->
+
+    <div class="row mt-4">
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="summary-card text-center">
+
+                <i class="bi bi-people-fill text-primary fs-1 mb-3"></i>
+
+                <small>
+
+                    Total Drivers
+
+                </small>
+
+                <h3>
+
+                    {{ drivers|length }}
+
+                </h3>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="summary-card text-center">
+
+                <i class="bi bi-person-check-fill text-success fs-1 mb-3"></i>
+
+                <small>
+
+                    Active Drivers
+
+                </small>
+
+                <h3>
+
+                    {{ active_driver_count|default:0 }}
+
+                </h3>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="summary-card text-center">
+
+                <i class="bi bi-card-checklist text-warning fs-1 mb-3"></i>
+
+                <small>
+
+                    Valid Licenses
+
+                </small>
+
+                <h3>
+
+                    {{ valid_license_count|default:0 }}
+
+                </h3>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="summary-card text-center">
+
+                <i class="bi bi-award-fill text-danger fs-1 mb-3"></i>
+
+                <small>
+
+                    Avg Experience
+
+                </small>
+
+                <h3>
+
+                    {{ average_experience|default:"0" }}
+
+                    Yrs
+
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ===================================== -->
+    <!-- QUICK INFO -->
+    <!-- ===================================== -->
+
+    <div class="dashboard-panel mt-4">
+
+        <div class="row">
+
+            <div class="col-md-4 text-center">
+
+                <h5>
+
+                    <i class="bi bi-shield-check text-success"></i>
+
+                    Driver Safety
+
+                </h5>
+
+                <h2 class="mt-3 text-success">
+
+                    98%
+
+                </h2>
+
+            </div>
+
+            <div class="col-md-4 text-center">
+
+                <h5>
+
+                    <i class="bi bi-clock-history text-primary"></i>
+
+                    On-Time Rate
+
+                </h5>
+
+                <h2 class="mt-3">
+
+                    94%
+
+                </h2>
+
+            </div>
+
+            <div class="col-md-4 text-center">
+
+                <h5>
+
+                    <i class="bi bi-star-fill text-warning"></i>
+
+                    Performance
+
+                </h5>
+
+                <h2 class="mt-3">
+
+                    Excellent
+
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+        <!-- ===================================== -->
+    <!-- RECENT DRIVER ACTIVITY -->
+    <!-- ===================================== -->
+
+    <div class="row mt-4">
+
+        <div class="col-lg-8">
+
+            <div class="dashboard-panel">
+
+                <div class="panel-header">
+
+                    <h5 class="mb-0">
+
+                        Recent Drivers
+
+                    </h5>
+
+                </div>
+
+                <div class="table-responsive">
+
+                    <table class="table table-striped align-middle">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Name</th>
+
+                                <th>Phone</th>
+
+                                <th>Experience</th>
+
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            {% for driver in drivers|slice:":5" %}
+
+                            <tr>
+
+                                <td>
+
+                                    <strong>
+
+                                        {{ driver.full_name }}
+
+                                    </strong>
+
+                                </td>
+
+                                <td>
+
+                                    {{ driver.phone }}
+
+                                </td>
+
+                                <td>
+
+                                    {{ driver.experience }} Years
+
+                                </td>
+
+                                <td>
+
+                                    {% if driver.active %}
+
+                                        <span class="badge bg-success">
+
+                                            Active
+
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="badge bg-secondary">
+
+                                            Inactive
+
+                                        </span>
+
+                                    {% endif %}
+
+                                </td>
+
+                            </tr>
+
+                            {% empty %}
+
+                            <tr>
+
+                                <td colspan="4"
+                                    class="text-center text-muted py-4">
+
+                                    No Driver Records Found
+
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ===================================== -->
+        <!-- DRIVER TIPS -->
+        <!-- ===================================== -->
+
+        <div class="col-lg-4">
+
+            <div class="dashboard-panel">
+
+                <div class="panel-header">
+
+                    <h5 class="mb-0">
+
+                        Driver Tips
+
+                    </h5>
+
+                </div>
+
+                <ul class="list-group list-group-flush">
+
+                    <li class="list-group-item">
+
+                        ✔ Renew licenses before expiry.
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        ✔ Verify emergency contact details.
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        ✔ Keep driver profile updated.
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        ✔ Track attendance regularly.
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        ✔ Schedule periodic training.
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+        <!-- ===================================== -->
+    <!-- PAGE FOOTER -->
+    <!-- ===================================== -->
+
+    <div class="text-center mt-4 mb-2">
+
+        <small class="text-muted">
+
+            TransitOps Driver Management • {{ drivers|length }} Driver(s)
+
+        </small>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const searchInput = document.getElementById("driverSearch");
+
+    const table = document.getElementById("driverTable");
+
+    if (!table || !searchInput) return;
+
+    const rows = table.querySelectorAll("tbody tr");
+
+    searchInput.addEventListener("keyup", function () {
+
+        const value = this.value.toLowerCase();
+
+        rows.forEach(function (row) {
+
+            row.style.display =
+                row.innerText.toLowerCase().includes(value)
+                    ? ""
+                    : "none";
+
+        });
+
+    });
+
+});
+
+</script>
+
+{% endblock %}
